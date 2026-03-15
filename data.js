@@ -98,21 +98,11 @@ function getData() {
       pic: "image/冰凤.gif",
       link: "https://pan.baidu.com/s/xxxx05"
     },
-    function getData() {
-      return [
-        {
-          name: "耳光音效",
-          type: "音频",
-          pic: "音效/打耳光.wav",   // 前端播放用
-          link: "音效/打耳光.wav" // 后端下载链接
-        },
-        {
-          name: "巴掌音效",
-          type: "音频",
-          pic: "音效/打巴掌.wav",
-          link: "音效/打巴掌.wav"
-        }
-      ];
+    {
+      name: "音效库",
+      type: "音频",
+      pic: "image/音频图片.png",
+      link: "https://pan.quark.cn/s/44275b89bee4"
     },
     {
       name: "四种异火",
@@ -124,13 +114,13 @@ function getData() {
       name: "素材网150元",
       type: "应用",
       pic: "image/素材网.png",
-      link: "https://pan.baidu.com/s/xxxx07"
+      link: "image/我的微信.png"
     },
     {
       name: "自定义素材网（先做后给钱，最少300元）",
       type: "应用",
       pic: "image/自定义素材网.png",
-      link: "https://pan.baidu.com/s/xxxx07"
+      link: "image/我的微信.png"
     },
 
 
