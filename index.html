@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>嚯雨素材网</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 微软雅黑, sans-serif
+        }
+
+        html,
+        body {
+            overflow-x: hidden;
+            background: #f5f7fa
+        }
+
+        /* 导航 */
+        .nav {
+            background: #2c3e50;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 25px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold
+        }
+
+        .user {
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        #name {
+            color: #4ade80;
+            font-weight: bold
+        }
+
+        button {
+            padding: 8px 14px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer
+        }
+
+        .login {
+            background: #409eff;
+            color: white
+        }
+
+        .logout {
+            background: #f43f5e;
+            color: white
+        }
+
+        /* 中间公告 */
+        .center-notice {
+            background: linear-gradient(90deg, #ff4d4f, #ff6b6b);
+            color: white;
+            text-align: center;
+            font-size: 16px;
+            padding: 12px 0;
+            margin: 15px auto;
+            max-width: 1200px;
+            border-radius: 8px;
+        }
+
+        /* 分类 */
+        .cate {
+            display: flex;
+            gap: 12px;
+            padding: 18px 25px;
+            flex-wrap: wrap;
+            background: white;
+            border-bottom: 1px solid #eee;
+            justify-content: center;
+        }
+
+        .cate button {
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            background: white;
+            padding: 10px 20px;
+            font-size: 17px;
+        }
+
+        .cate .active {
+            background: #409eff;
+            color: white;
+            border-color: #409eff
+        }
+
+        /* 极速网格：一行5个 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 18px;
+            padding: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+        }
+
+        .card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            display: block;
+            background: #f1f1f1
+        }
+
+        .info {
+            padding: 12px;
+            text-align: center;
+            font-size: 15px
+        }
+
+        /* 登录弹窗 */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .box {
+            background: white;
+            width: 340px;
+            padding: 30px;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            right: 15px;
+            top: 12px;
+            font-size: 22px;
+            cursor: pointer;
+            color: #666
+        }
+
+        input {
+            width: 100%;
+            padding: 11px;
+            margin: 9px 0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        .sub {
+            width: 100%;
+            background: #409eff;
+            color: white;
+            padding: 11px;
+            margin-top: 5px
+        }
+
+        .contact {
+            text-align: center;
+            margin-top: 15px;
+            color: #666;
+            font-size: 14px
+        }
+
+        .contact span {
+            color: #409eff;
+            cursor: pointer
+        }
+
+        /* 联系管理员 */
+        .contact-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .contact-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .contact-box img {
+            max-width: 220px;
+            margin: 15px 0;
+            border-radius: 8px
+        }
+
+        .close-contact {
+            padding: 8px 16px;
+            background: #409eff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer
+        }
+
+        /* 预览弹窗 */
+        .preview {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 9999;
+        }
+
+        .preview img {
+            max-width: 90%;
+            max-height: 75vh;
+            border-radius: 10px
+        }
+
+        .down {
+            margin-top: 25px;
+            padding: 14px 35px;
+            background: #409eff;
+            color: white;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="nav">
+        <div class="logo">嚯雨素材网</div>
+        <div class="user">
+            <span id="name" style="display:none"></span>
+            <button class="login" id="loginBtn">登录</button>
+            <button class="logout" id="logoutBtn" style="display:none">退出登录</button>
+        </div>
+    </div>
+
+    <div class="center-notice">
+        🔥 嚯雨素材网不定时更新 99元永久更新 本人准备考试所有素材不定时
+    </div>
+
+    <div class="cate">
+        <button class="active" data-type="all">全部</button>
+        <button data-type="人物">人物</button>
+        <button data-type="场景">场景</button>
+        <button data-type="表情">表情</button>
+        <button data-type="道具">道具</button>
+        <button data-type="动物">动物</button>
+        <button data-type="音频">音频</button>
+        <button data-type="特效">特效</button>
+        <button data-type="应用">应用</button>
+    </div>
+
+    <div class="grid" id="grid"></div>
+
+    <!-- 登录弹窗 -->
+    <div class="modal" id="modal">
+        <div class="box">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>账号登录</h3>
+            <input id="user" placeholder="请输入账号">
+            <input type="password" id="pwd" placeholder="请输入密码">
+            <button class="sub" onclick="goLogin()">立即登录</button>
+            <div class="contact">登录失败？<span onclick="openContact()">联系管理员</span></div>
+        </div>
+    </div>
+
+    <!-- 联系管理员（图片在这里） -->
+    <div class="contact-modal" id="contactModal">
+        <div class="contact-box">
+            <h3>联系管理员</h3>
+            <p>扫码获取账号密码</p>
+            <img src="image/我的微信.png" alt="管理员">
+            <button class="close-contact" onclick="closeContact()">关闭</button>
+        </div>
+    </div>
+
+    <!-- 预览弹窗 -->
+    <div class="preview" id="preview">
+        <img id="preImg">
+        <button class="down" id="downBtn">立即下载</button>
+    </div>
+
+    <script src="server.js"></script>
+    <script src="data.js"></script>
+    <script>
+        let isLogin = !!(localStorage.login === 'ok');
+
+        // 一打开页面就瞬间渲染素材（无延迟）
+        document.addEventListener('DOMContentLoaded', () => {
+            showUser();
+            renderAll(getData());
+        });
+
+        // 渲染函数（极快）
+        function renderAll(list) {
+            const g = document.getElementById('grid');
+            g.innerHTML = '';
+            list.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'card';
+                div.innerHTML = `<img src="${item.pic}" loading="eager"><div class="info">${item.name}</div>`;
+                div.onclick = () => {
+                    if (!isLogin) { alert('请先登录'); return; }
+                    document.getElementById('preImg').src = item.pic;
+                    document.getElementById('downBtn').onclick = () => window.open(item.link, '_blank');
+                    document.getElementById('preview').style.display = 'flex';
+                };
+                g.appendChild(div);
+            });
+        }
+
+        // 登录
+        function goLogin() {
+            const u = document.getElementById('user').value;
+            const p = document.getElementById('pwd').value;
+            const user = checkUser(u, p);
+            if (user) {
+                isLogin = true;
+                localStorage.login = 'ok';
+                localStorage.name = user.name;
+                alert('登录成功');
+                showUser();
+                closeModal();
+                renderAll(getData());
+            } else {
+                alert('账号或密码错误');
+            }
+        }
+
+        function showUser() {
+            if (localStorage.login === 'ok') {
+                document.getElementById('name').innerText = '欢迎，' + localStorage.name;
+                document.getElementById('name').style.display = 'inline';
+                document.getElementById('loginBtn').style.display = 'none';
+                document.getElementById('logoutBtn').style.display = 'inline-block';
+            }
+        }
+
+        // 分类
+        document.querySelectorAll('.cate button').forEach(btn => {
+            btn.onclick = () => {
+                document.querySelectorAll('.cate button').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const t = btn.dataset.type;
+                const data = t === 'all' ? getData() : getData().filter(i => i.type === t);
+                renderAll(data);
+            };
+        });
+
+        // 弹窗操作
+        document.getElementById('loginBtn').onclick = () => document.getElementById('modal').style.display = 'flex';
+        function closeModal() { document.getElementById('modal').style.display = 'none'; }
+        function openContact() { document.getElementById('contactModal').style.display = 'flex'; }
+        function closeContact() { document.getElementById('contactModal').style.display = 'none'; }
+
+        document.getElementById('logoutBtn').onclick = () => {
+            localStorage.clear();
+            location.reload();
+        };
+
+        document.getElementById('preview').onclick = e => {
+            if (e.target.id === 'preview') document.getElementById('preview').style.display = 'none';
+        };
+    </script>
+</body>
+
+</html>
