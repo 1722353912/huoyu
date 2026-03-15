@@ -99,6 +99,12 @@ function getData() {
       link: "https://pan.baidu.com/s/xxxx05"
     },
     {
+      name: "音效库",
+      type: "音频",
+      pic: "image/音频图片.png",
+      link: "https://pan.quark.cn/s/463fafc9a81c"
+    },
+    {
       name: "打耳光",
       type: "音频",
       pic: "image/音频图片.png",
