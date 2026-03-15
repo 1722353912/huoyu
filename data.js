@@ -98,17 +98,21 @@ function getData() {
       pic: "image/冰凤.gif",
       link: "https://pan.baidu.com/s/xxxx05"
     },
-    {
-      name: "音效库",
-      type: "音频",
-      pic: "image/音频图片.png",
-      link: "https://pan.quark.cn/s/463fafc9a81c"
-    },
-    {
-      name: "打耳光",
-      type: "音频",
-      pic: "image/音频图片.png",
-      link: "音效/打耳光.wav"
+    function getData() {
+      return [
+        {
+          name: "耳光音效",
+          type: "音频",
+          pic: "音效/打耳光.wav",   // 前端播放用
+          link: "音效/打耳光.wav" // 后端下载链接
+        },
+        {
+          name: "巴掌音效",
+          type: "音频",
+          pic: "音效/打巴掌.wav",
+          link: "音效/打巴掌.wav"
+        }
+      ];
     },
     {
       name: "四种异火",
