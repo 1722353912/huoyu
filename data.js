@@ -87,16 +87,28 @@ function getData() {
       link: "道具/游戏钥匙.fla"
     },
     {
+      name: "丹虫（未分层）",
+      type: "动物",
+      pic: "image/4丹虫.gif",
+      link: "https://pan.baidu.com/s/1YdHOT3ft-Hqvu1f7_o2e-Q?pwd=1234 提取码: 1234"
+    },
+    {
+      name: "蛇妖（未分层）",
+      type: "动物",
+      pic: "image/3翅膀蛇妖两个动作.gif",
+      link: "https://pan.baidu.com/s/1FZcG0FfBeo9oXvpclyekZg?pwd=1234 提取码: 1234"
+    },
+    {
       name: "白凤凰（未分层）",
       type: "动物",
       pic: "image/白凤凰.gif",
-      link: "https://pan.baidu.com/s/xxxx05"
+      link: "https://pan.baidu.com/s/1ksL_IAoq9RcTZiVjugf42A?pwd=1234 提取码: 1234"
     },
     {
       name: "冰凤（未分层）",
       type: "动物",
       pic: "image/冰凤.gif",
-      link: "https://pan.baidu.com/s/xxxx05"
+      link: "https://pan.baidu.com/s/1PDm16aRGdPi-RfRuM3BY7w?pwd=1234 提取码: 1234"
     },
     {
       name: "音效库",
